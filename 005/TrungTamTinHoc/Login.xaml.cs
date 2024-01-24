@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrungTamTinHoc.GIANG_VIEN;
 using TrungTamTinHoc.SINH_VIEN;
 
 namespace TrungTamTinHoc
@@ -54,11 +55,20 @@ namespace TrungTamTinHoc
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text == "admin" && txtUserpass.Password == "123")
+            if (txtUsername.Text == "sinhvien" && txtUserpass.Password == "123")
             {
-                SV_home home = new SV_home();
+                SV_home homeSV = new SV_home();
                 this.Hide();
-                home.Show();
+                homeSV.Show();
+            }
+            else if (txtUsername.Text == "giangvien" && txtUserpass.Password == "123")
+            {
+                if (cbGiangvien.IsChecked == true)
+                {
+                    GV_home homeGV = new GV_home();
+                    this.Hide();
+                    homeGV.Show();
+                }
             }
         }
     }

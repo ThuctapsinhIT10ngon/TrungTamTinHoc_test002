@@ -9,6 +9,9 @@
              d:DesignHeight="630"
              d:DesignWidth="1110">
     <Grid Background="#F1F1F1">
-        <TextBlock Text="calendar" FontSize="50" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
     </Grid>
 </UserControl>

@@ -134,6 +134,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GIANG_VIEN\GV_home.xaml.cs">
+      <DependentUpon>GV_home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GIANG_VIEN\homeGV_child.xaml.cs">
+      <DependentUpon>homeGV_child.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SINH_VIEN\celendarSV_child.xaml.cs">
       <DependentUpon>celendarSV_child.xaml</DependentUpon>
     </Compile>
@@ -155,6 +161,14 @@
     <Compile Include="SINH_VIEN\SV_home.xaml.cs">
       <DependentUpon>SV_home.xaml</DependentUpon>
     </Compile>
+    <Page Include="GIANG_VIEN\GV_home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GIANG_VIEN\homeGV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -232,6 +246,9 @@
     <Content Include="mongocrypt.dll" />
     <Resource Include="Image\download.png" />
     <Resource Include="Image\snapedit_1705742871954.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NHAN_VIEN\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />

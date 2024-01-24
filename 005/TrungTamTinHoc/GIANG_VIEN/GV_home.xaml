@@ -1,9 +1,9 @@
-﻿<Window x:Class="TrungTamTinHoc.SINH_VIEN.SV_home"
+﻿<Window x:Class="TrungTamTinHoc.GIANG_VIEN.GV_home"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TrungTamTinHoc.SINH_VIEN"
+        xmlns:local="clr-namespace:TrungTamTinHoc.GIANG_VIEN"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Home"
         Width="1280"
@@ -37,7 +37,7 @@
             MouseDown="Grid_MouseDown">
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                 <Image Width="50" Margin="5,0,0,0" />
-                <TextBlock Margin="15,2.5,0,0" Text="TRANG CHỦ - SINH VIÊN" Foreground="White" />
+                <TextBlock Margin="15,2.5,0,0" Text="TRANG CHỦ - GIẢNG VIÊN" Foreground="White" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button
@@ -365,7 +365,7 @@
                                         VerticalAlignment="Top"
                                         FontSize="9"
                                         Foreground="White"
-                                        Text="Mã sinh viên: " />
+                                        Text="Mã giảng viên: " />
                                     <TextBlock
                                         Width="50"
                                         HorizontalAlignment="Left"
@@ -373,20 +373,20 @@
                                         FontSize="9"
                                         Foreground="White" />
                                 </StackPanel>
-                                <StackPanel Margin="45,26,0,0" Orientation="Horizontal">
-                                    <TextBlock
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        FontSize="9"
-                                        Foreground="White"
-                                        Text="Khóa: " />
-                                    <TextBlock
-                                        Width="50"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        FontSize="9"
-                                        Foreground="White" />
-                                </StackPanel>
+                                <!--<StackPanel Margin="45,26,0,0" Orientation="Horizontal">
+                                <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                FontSize="9"
+                                Foreground="White"
+                                Text="Khóa: " />
+                                <TextBlock
+                                Width="50"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                FontSize="9"
+                                Foreground="White" />
+                                </StackPanel>-->
                             </Grid>
                             <Ellipse
                                 Width="40"

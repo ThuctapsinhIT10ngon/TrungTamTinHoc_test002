@@ -176,6 +176,7 @@
                 </StackPanel>
                 <StackPanel Margin="10,10,5,5" Orientation="Horizontal">
                     <CheckBox
+                        x:Name="cbGiangvien"
                         Margin="0,0,60,0"
                         Background="Blue"
                         Content="Giảng viên"
