@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using TrungTamTinHoc.GIANG_VIEN;
 using TrungTamTinHoc.SINH_VIEN;
 
@@ -26,6 +30,11 @@ namespace TrungTamTinHoc
         public MainWindow()
         {
             InitializeComponent();
+            mongodconnet();
+        }
+
+        private void mongodconnet()
+        {
         }
 
         private void hplkPass_Click(object sender, RoutedEventArgs e)
@@ -55,20 +64,40 @@ namespace TrungTamTinHoc
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text == "sinhvien" && txtUserpass.Password == "123")
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("TrungTamTinHoc");
+            var collection = database.GetCollection<BsonDocument>("SINH_VIEN");
+
+            string role = "sinh_vien";
+            var filter = Builders<BsonDocument>.Filter.And(
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", txtUsername.Text),
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", txtUserpass.Password),
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role)
+            );
+
+            string role1 = "nhan_vien";
+            var filter1 = Builders<BsonDocument>.Filter.And(
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", txtUsername.Text),
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", txtUserpass.Password),
+                         Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role1)
+            );
+
+            var check_user = collection.Find(filter).FirstOrDefault();
+            var check_user1 = collection.Find(filter1).FirstOrDefault();
+            if (check_user != null)
             {
+                GlobalVariables.UserName = txtUsername.Text;
                 SV_home homeSV = new SV_home();
-                this.Hide();
                 homeSV.Show();
+                this.Close();
             }
-            else if (txtUsername.Text == "giangvien" && txtUserpass.Password == "123")
+            else if (check_user1 != null)
             {
-                if (cbGiangvien.IsChecked == true)
-                {
-                    GV_home homeGV = new GV_home();
-                    this.Hide();
-                    homeGV.Show();
-                }
+                MessageBox.Show("Thành công nhân viên");
+            }
+            else
+            {
+                MessageBox.Show("Sai");
             }
         }
     }

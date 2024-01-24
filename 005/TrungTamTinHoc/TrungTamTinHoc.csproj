@@ -140,6 +140,7 @@
     <Compile Include="GIANG_VIEN\homeGV_child.xaml.cs">
       <DependentUpon>homeGV_child.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GlobalVariables.cs" />
     <Compile Include="SINH_VIEN\celendarSV_child.xaml.cs">
       <DependentUpon>celendarSV_child.xaml</DependentUpon>
     </Compile>

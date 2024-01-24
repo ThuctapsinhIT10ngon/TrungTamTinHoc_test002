@@ -154,8 +154,7 @@
                         materialDesign:HintAssist.Foreground="Blue"
                         materialDesign:HintAssist.Hint="Nhập tên đăng nhập"
                         materialDesign:TextFieldAssist.UnderlineBrush="Blue"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        Text="admin" />
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </StackPanel>
                 <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                     <materialDesign:PackIcon
@@ -171,7 +170,6 @@
                         materialDesign:PasswordBoxAssist.Password="{Binding Password1, Mode=TwoWay}"
                         materialDesign:TextFieldAssist.UnderlineBrush="Blue"
                         IsEnabled="{Binding ElementName=RevealPasswordDefaultEnabled, Path=IsChecked}"
-                        Password="123"
                         Style="{StaticResource MaterialDesignRevealPasswordBox}" />
                 </StackPanel>
                 <StackPanel Margin="10,10,5,5" Orientation="Horizontal">

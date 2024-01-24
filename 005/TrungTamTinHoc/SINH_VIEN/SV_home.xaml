@@ -353,6 +353,7 @@
                                     Margin="20,0,0,0"
                                     Fill="Blue" />
                                 <TextBlock
+                                    x:Name="txtTest"
                                     Width="130"
                                     Margin="45,2,0,0"
                                     HorizontalAlignment="Left"
