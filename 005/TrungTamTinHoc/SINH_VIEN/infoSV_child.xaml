@@ -1,0 +1,214 @@
+﻿<UserControl x:Class="TrungTamTinHoc.SINH_VIEN.infoSV_child"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TrungTamTinHoc.SINH_VIEN"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         d:DesignHeight="630"
+         d:DesignWidth="1110"
+         mc:Ignorable="d">
+    <Grid Background="#F1F1F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <StackPanel Background="Blue" Height="150" Width="970" Margin="0 1 0 0">
+                <Canvas>
+                    <Rectangle Height="150" Width="970" MouseUp="Shape_MouseUp">
+                        <Rectangle.Fill>
+                            <ImageBrush Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Canvas>
+            </StackPanel>
+            <Canvas>
+                <Ellipse Width="120" Height="120" Canvas.Top="-60" Canvas.Left="800" Fill="#F1F1F1" />
+                <Ellipse Width="100.5" Height="100.5" Canvas.Left="809.75" Canvas.Top="-50.25" Fill="White" />
+                <Ellipse Width="100" Height="100" Canvas.Left="810" Canvas.Top="-50" MouseUp="Shape_MouseUp">
+                    <Ellipse.Fill>
+                        <ImageBrush Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Canvas>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10 0 10 30">
+            <StackPanel Background="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Margin="10 10 0 0">
+                        <Canvas Width="150" Height="200">
+                            <Rectangle Width="150" Height="200" MouseUp="Shape_MouseUp">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="/Image/download.png" Stretch="Fill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Canvas>
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0 10 0 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Họ và tên: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox x:Name="txtHoten" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                            <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Mã số sinh viên: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 IsReadOnly="True" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Khóa: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox x:Name="txtkhoa" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                            <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Hệ đào tạo: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox x:Name="txtHedaotao" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                            <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Chuyên nghành: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox x:Name="txtCnghanh" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                            <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Ngày sinh: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <DatePicker
+                            x:Name="dtpNgaysinh"
+                            Text="12/12/2022"
+                            Margin="20 0 0 0" Width="150"
+                            materialDesign:HintAssist.Hint=""
+                            materialDesign:TextFieldAssist.HasClearButton="True"
+                            materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            IsEnabled="False" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                            <TextBlock Text="Giới tính: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Name="rbNam" Margin="20 0 0 0" Content="Nam" IsEnabled="False" IsChecked="True" />
+                                <RadioButton x:Name="rbNu" Margin="20 0 0 0" Content="Nữ" IsEnabled="False" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                            <TextBlock Text="Địa chỉ: " Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                            <TextBox x:Name="txtDiachi" Margin="20 0 0 0" Width="400" VerticalAlignment="Center"
+                                 materialDesign:HintAssist.Hint=""
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue" IsReadOnly="True" />
+                            <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                <TextBlock Text="Quốc tịch: " Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                                <TextBox x:Name="txtQuoctich" Margin="20 0 0 0" Width="100" VerticalAlignment="Center"
+                                     materialDesign:HintAssist.Hint=""
+                                     materialDesign:TextFieldAssist.UnderlineBrush="Blue" IsReadOnly="True" />
+                                <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                <TextBlock Text="Gmail: " Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                                <TextBox x:Name="txtGmail" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                                     materialDesign:HintAssist.Hint=""
+                                     materialDesign:TextFieldAssist.UnderlineBrush="Blue" IsReadOnly="True" />
+                                <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                <TextBlock Text="SDT: " Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" />
+                                <TextBox x:Name="txtSDT" Margin="20 0 0 0" Width="100" VerticalAlignment="Center"
+                                     materialDesign:HintAssist.Hint=""
+                                     materialDesign:TextFieldAssist.UnderlineBrush="Blue" IsReadOnly="True" />
+                                <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" Margin="0 0 10 0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical" Margin="20 0 0 0" Background="White" Width="392.35">
+                    <TextBlock Text="KHÓA HỌC CỦA BẠN" VerticalAlignment="Top" TextAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="White" Background="Blue" />
+                    <ScrollViewer Margin="10" Height="200">
+                        <StackPanel>
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                            <StackPanel Width="100" Height="50" Background="Black" Margin="5" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="20 20 0 0" Background="White" Width="392.35" Height="130">
+                    <TextBlock Text="TÙY CHỈNH KHÓA HỌC CỦA BẠN" HorizontalAlignment="Left" TextAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="White" Background="BlueViolet" Padding="5 2 5 2" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Nhập mã khóa học của bạn:" Margin="5 0 5 0" VerticalAlignment="Center" />
+                        <TextBox Width="150" Margin="5 0 0 0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="20" HorizontalAlignment="Center">
+                        <Button
+                        Content="Hủy khóa học"
+                        Background="Red"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+                        <Button
+                        Content="Hoãn hóa học" Margin="20 0 0 0" Background="#FFC2C203"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Canvas>
+            <StackPanel Orientation="Horizontal" Canvas.Top="605" Canvas.Left="10">
+                <ToggleButton
+                x:Name="tglEditinfo"
+                HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                ToolTip="MaterialDesignSwitchToggleButton with Content and ToggleButtonAssist.OnContent" Click="tglEditinfo_Click">
+                    <materialDesign:PackIcon
+                    Foreground="Blue"
+                    Kind="Pencil"
+                    RenderTransformOrigin=".5,.5">
+                        <materialDesign:PackIcon.RenderTransform>
+                            <RotateTransform
+                            Angle="45" />
+                        </materialDesign:PackIcon.RenderTransform>
+                    </materialDesign:PackIcon>
+                    <materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                        Foreground="White"
+                        Kind="Pencil" />
+                    </materialDesign:ToggleButtonAssist.OnContent>
+                </ToggleButton>
+                <TextBlock Text="Chỉnh sửa thông tin" VerticalAlignment="Center" Margin="5 0 0 0" />
+            </StackPanel>
+            <StackPanel x:Name="btnEdit_OK" Canvas.Top="600" Canvas.Left="180" Width="100" Height="30">
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</UserControl>

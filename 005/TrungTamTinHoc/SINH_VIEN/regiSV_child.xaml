@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="TrungTamTinHoc.SINH_VIEN.regiSV_child"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TrungTamTinHoc.SINH_VIEN"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="630"
+             d:DesignWidth="1110"
+             mc:Ignorable="d">
+    <Grid Background="#F1F1F1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="1.75*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="2" Grid.Column="0" Background="White" Margin="10">
+            <TextBlock Text="DANH SÁCH KHÓA HỌC MỞ ĐĂNG KÝ" HorizontalAlignment="Left" Padding="10 2 10 2" Background="Green" Foreground="White" FontSize="20" />
+            <ScrollViewer Margin="10" Height="550" VerticalAlignment="Center">
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel Background="White" Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="10">
+            <TextBlock Text="THÔNG TIN KHÓA HỌC" HorizontalAlignment="Left" Padding="10 2 10 2" Background="Blue" Foreground="White" FontSize="15" />
+            <StackPanel Orientation="Horizontal" Margin="5 5 5 0">
+                <TextBlock VerticalAlignment="Center" Text="Tên khóa học:" />
+                <TextBox VerticalAlignment="Center" Width="200" Margin="20 0 0 0"
+                         materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                         IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5 5 5 0">
+                <TextBlock VerticalAlignment="Center" Text="Ngày khai giảng:" />
+                <TextBox VerticalAlignment="Center" Width="70" Margin="10 0 0 0"
+                         materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                         IsReadOnly="True" />
+                <TextBlock VerticalAlignment="Center" Text="Ngày kết thúc(dự kiến):" Margin="30 0 0 0" />
+                <TextBox VerticalAlignment="Center" Width="70" Margin="10 0 0 0"
+                         materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                         IsReadOnly="True" />
+            </StackPanel>
+            <StackPanel>
+                <GroupBox Header="Giảng viên" Margin="5 20 5 5"
+                          materialDesign:ColorZoneAssist.Background="Khaki"
+                          materialDesign:ColorZoneAssist.Foreground="Black"
+                          materialDesign:ColorZoneAssist.Mode="Custom">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Mã giảng viên:" VerticalAlignment="Center" />
+                        <TextBox Width="70" VerticalAlignment="Center" Margin="10 0 5 0"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                        <TextBlock Text="Tên giảng viên:" VerticalAlignment="Center" />
+                        <TextBox Width="140" VerticalAlignment="Center" Margin="10 0 0 0"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Blue"
+                                 IsReadOnly="True" />
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 5 5 0" Background="Red">
+                <TextBlock Text="Đơn giá:" FontWeight="Bold" Foreground="White" Margin="5 0 0 0" />
+                <TextBlock FontWeight="Bold" Foreground="White" Margin="5 0 5 0" />
+                <TextBlock Text="VND" FontWeight="Bold" Foreground="White" Margin="5 0 5 0" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <StackPanel Margin="10" Orientation="Vertical" Background="White">
+                <TextBlock Text="CHỌN LỚP ĐĂNG KÝ" HorizontalAlignment="Left" Padding="10 2 10 2" Background="Blue" Foreground="White" FontSize="15" />
+                <StackPanel Orientation="Horizontal" Margin="20 10">
+                    <TextBlock Text="Chọn lớp học:" VerticalAlignment="Center" />
+                    <ComboBox
+                        Margin="20 0 0 0"
+                        Width="150"
+                        materialDesign:TextFieldAssist.UnderlineBrush="Blue">
+                        <ComboBoxItem
+                            Content="Android" />
+                        <ComboBoxItem
+                            Content="iOS" />
+                        <ComboBoxItem
+                            Content="Linux" />
+                        <ComboBoxItem
+                            Content="Windows" />
+                    </ComboBox>
+                    <TextBlock Text="Số đăng ký:" Margin="20 0 0 0" VerticalAlignment="Center" />
+                    <TextBlock Text="" Margin="5 0 5 0" VerticalAlignment="Center" />
+                    <TextBlock Text="/20" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20 10">
+                    <TextBlock Text="Giờ học:" VerticalAlignment="Center" />
+                    <TextBlock Width="100" Margin="10 0 0 0" />
+                    <TextBlock Text="Ca học:" VerticalAlignment="Center" />
+                    <TextBlock Width="90" Margin="10 0 0 0" />
+                    <TextBlock Text="/Tuần" />
+                </StackPanel>
+                <StackPanel Margin="20 10">
+                    <Button
+                        Background="#FF00F300"
+                        materialDesign:RippleAssist.Feedback="Blue"
+                        Content="CUSTOM RIPPLE"
+                        Foreground="White"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedSecondaryButton}"
+                        ToolTip="Resource name: MaterialDesignRaisedSecondaryButton" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
