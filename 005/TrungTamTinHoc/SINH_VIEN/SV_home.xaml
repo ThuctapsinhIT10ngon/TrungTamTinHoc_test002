@@ -353,7 +353,7 @@
                                     Margin="20,0,0,0"
                                     Fill="Blue" />
                                 <TextBlock
-                                    x:Name="txtTest"
+                                    x:Name="txtHoten"
                                     Width="130"
                                     Margin="45,2,0,0"
                                     HorizontalAlignment="Left"
@@ -368,6 +368,7 @@
                                         Foreground="White"
                                         Text="Mã sinh viên: " />
                                     <TextBlock
+                                        x:Name="txtMa"
                                         Width="50"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top"
@@ -396,13 +397,22 @@
                                 Stroke="Black"
                                 StrokeThickness=".5" />
                         </Canvas>
-                        <materialDesign:PackIcon
-                            Width="30"
-                            Height="30"
-                            Margin="0,0,10,0"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Kind="Logout" />
+                        <StackPanel x:Name="logout_icon"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,10,2.5,0"
+                                    MouseLeftButtonDown="logout_icon_MouseLeftButtonDown_1">
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Background="Red"
+                                Foreground="White"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Kind="Logout" />
+                            <TextBlock FontSize="9" FontWeight="Bold">
+                                Đăng xuất
+                            </TextBlock>
+                        </StackPanel>
                     </Grid>
                     <Grid x:Name="space" Grid.Row="1" Background="#F1F1F1">
                     </Grid>

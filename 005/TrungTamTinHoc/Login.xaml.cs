@@ -70,53 +70,68 @@ namespace TrungTamTinHoc
             string user_name = txtUsername.Text;
             string user_pass = txtUserpass.Password;
             // Thực hiện công việc nặng một cách bất đồng bộ
-            await Task.Delay(5000);
+            await Task.Delay(2000);
             await Task.Run(() =>
             {
-                var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "SINH_VIEN");
+                var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "GIANG_VIEN");
+                var connector1 = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "SINH_VIEN");
 
-                string role = "sinh_vien";
-                var filter = Builders<BsonDocument>.Filter.And(
+                string role = "giang_vien";
+                var filter_GV = Builders<BsonDocument>.Filter.And(
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", user_pass),
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role)
                 );
 
-                // Xử lý document tại đây
-
                 string role1 = "nhan_vien";
-                var filter1 = Builders<BsonDocument>.Filter.And(
+                var filter_NV = Builders<BsonDocument>.Filter.And(
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", user_pass),
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role1)
                 );
 
-                var check_user = connector.FindDocument(filter);
-                var check_user1 = connector.FindDocument(filter1);
+                var filter_SV = Builders<BsonDocument>.Filter.And(
+                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
+                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", user_pass)
+                );
+
+                var check_userGV = connector.FindDocument(filter_GV);
+                var check_userNV = connector.FindDocument(filter_NV);
+                var check_userSV = connector1.FindDocument(filter_SV);
 
                 // Cập nhật UI từ UI thread
                 Dispatcher.Invoke(() =>
                 {
                     if (cbGiangvien.IsChecked == true)
                     {
-                        MessageBox.Show("Đăng nhập giảng viên thành công");
+                        if (check_userGV != null)
+                        {
+                            MessageBox.Show("Đăng nhập giảng viên thành công");
+                        }
+                        else if (check_userNV != null)
+                        {
+                            GlobalVariables.UserName = txtUsername.Text;
+                            NHAN_VIEN.NV_home homeNV = new NHAN_VIEN.NV_home();
+                            homeNV.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vui lòng kiểm tra lại thông tin đăng nhập");
+                        }
                     }
                     else
                     {
-                        if (check_user != null)
+                        if (check_userSV != null)
                         {
                             GlobalVariables.UserName = txtUsername.Text;
                             SV_home homeSV = new SV_home();
                             homeSV.Show();
                             this.Close();
                         }
-                        else if (check_user1 != null)
-                        {
-                            MessageBox.Show("Thành công nhân viên");
-                        }
                         else
                         {
-                            MessageBox.Show("Sai");
+                            MessageBox.Show("Vui lòng kiểm tra lại thông tin đăng nhập");
                         }
                     }
                 });

@@ -1,4 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,18 @@ namespace TrungTamTinHoc.GIANG_VIEN
         public GV_home()
         {
             InitializeComponent();
+            filldata();
+        }
+
+        private void filldata()
+        {
+            var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "GIANG_VIEN");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
+
+            var search = connector.FindDocument(filter);
+            txtMa.Text = GlobalVariables.UserName;
+            txtHoten.Text = search["thong_tin"]["ho_ten"].AsString;
         }
 
         //Giao diện
@@ -177,6 +191,14 @@ namespace TrungTamTinHoc.GIANG_VIEN
                     MessageBox.Show("Chức năng đang phát triển, vui lòng đợi");
                     break;
             }
+        }
+
+        private void logout_icon_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow logout = new MainWindow();
+            GlobalVariables.UserName = null;
+            logout.Show();
+            this.Close();
         }
     }
 }

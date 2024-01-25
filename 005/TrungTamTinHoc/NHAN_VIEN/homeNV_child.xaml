@@ -1,12 +1,90 @@
 ﻿<UserControl x:Class="TrungTamTinHoc.NHAN_VIEN.homeNV_child"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TrungTamTinHoc.NHAN_VIEN"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="630" d:DesignWidth="1100">
+    <Grid Background="#F1F1F1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.65*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Width="610" Margin="10,10,0,10" Background="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="150" Height="200" Margin="0 -2 0 0" Source="/Image/download.png" />
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="THÔNG TIN NHÂN VIÊN" Background="#a6a6a6" FontSize="15" Padding="2" />
+                            <TextBlock Text="Họ và tên: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Mã số nhân viên: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Ngày sinh: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Giới tính: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Địa chỉ: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Quốc tịch: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Gmail: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Số điện thoại: " Margin="20,5,0,0" FontSize="13" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="" Margin="-30,29,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <StackPanel Width="450" Margin="20,10,10,10" Background="White" Orientation="Vertical">
+                <TextBlock Text="TIN TỨC - LỊCH KHAI GIẢNG" Padding="2" Background="#a6a6a6" HorizontalAlignment="Left" FontSize="15" />
+                <ScrollViewer Margin="5 10 5 10" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel Width="350" Margin="10" Background="White" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="TỔNG QUAN KẾT QUẢ" Padding="2" Background="#a6a6a6" HorizontalAlignment="Left" FontSize="15" />
+                    <ComboBox Width="120" Margin="65 0 0 0"
+                              materialDesign:HintAssist.Hint="Chọn khóa học"
+                              materialDesign:TextFieldAssist.UnderlineBrush="Blue">
+                        <ComboBoxItem
+                            Content="Lập trình căn bản C#" />
+                        <ComboBoxItem
+                            Content="iOS" />
+                        <ComboBoxItem
+                            Content="Linux" />
+                        <ComboBoxItem
+                            Content="Windows" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel />
+            </StackPanel>
+            <StackPanel x:Name="test" Width="400" Margin="10"  Orientation="Vertical">
+                <StackPanel Background="White" Height="140" Orientation="Vertical">
+                    <TextBlock Text="KHÓA HỌC ĐANG HỌC" Padding="2" Background="#a6a6a6" HorizontalAlignment="Left" FontSize="15" />
+                    <ScrollViewer Margin="5 10 5 10" />
+                </StackPanel>
+                <StackPanel Height="15" />
+                <StackPanel Background="White" Height="140">
+                    <TextBlock Text="KHÓA HỌC HOÀN THÀNH" Padding="2" Background="#a6a6a6" HorizontalAlignment="Left" FontSize="15" />
+                    <ScrollViewer Margin="5 10 5 10" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Width="290" Margin="10" Background="White" Orientation="Vertical">
+                <TextBlock Text="THÔNG BÁO" Padding="2" Background="#a6a6a6" HorizontalAlignment="Left" FontSize="15" />
+                <ScrollViewer Margin="5 10 5 10" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
