@@ -62,43 +62,68 @@ namespace TrungTamTinHoc
             this.WindowState = WindowState.Minimized;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("TrungTamTinHoc");
-            var collection = database.GetCollection<BsonDocument>("SINH_VIEN");
+            // Hiển thị hiệu ứng loading
+            pgrLoading.Visibility = Visibility.Visible;
 
-            string role = "sinh_vien";
-            var filter = Builders<BsonDocument>.Filter.And(
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", txtUsername.Text),
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", txtUserpass.Password),
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role)
-            );
+            string user_name = txtUsername.Text;
+            string user_pass = txtUserpass.Password;
+            // Thực hiện công việc nặng một cách bất đồng bộ
+            await Task.Delay(5000);
+            await Task.Run(() =>
+            {
+                var client = new MongoClient("mongodb://localhost:27017");
+                var database = client.GetDatabase("TrungTamTinHoc");
+                var collection = database.GetCollection<BsonDocument>("SINH_VIEN");
 
-            string role1 = "nhan_vien";
-            var filter1 = Builders<BsonDocument>.Filter.And(
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", txtUsername.Text),
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", txtUserpass.Password),
-                         Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role1)
-            );
+                string role = "sinh_vien";
+                var filter = Builders<BsonDocument>.Filter.And(
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", user_pass),
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role)
+                );
 
-            var check_user = collection.Find(filter).FirstOrDefault();
-            var check_user1 = collection.Find(filter1).FirstOrDefault();
-            if (check_user != null)
-            {
-                GlobalVariables.UserName = txtUsername.Text;
-                SV_home homeSV = new SV_home();
-                homeSV.Show();
-                this.Close();
-            }
-            else if (check_user1 != null)
-            {
-                MessageBox.Show("Thành công nhân viên");
-            }
-            else
-            {
-                MessageBox.Show("Sai");
-            }
+                string role1 = "nhan_vien";
+                var filter1 = Builders<BsonDocument>.Filter.And(
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.user_pass", user_pass),
+                             Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role1)
+                );
+
+                var check_user = collection.Find(filter).FirstOrDefault();
+                var check_user1 = collection.Find(filter1).FirstOrDefault();
+
+                // Cập nhật UI từ UI thread
+                Dispatcher.Invoke(() =>
+                {
+                    if (cbGiangvien.IsChecked == true)
+                    {
+                        MessageBox.Show("Đăng nhập giảng viên thành công");
+                    }
+                    else
+                    {
+                        if (check_user != null)
+                        {
+                            GlobalVariables.UserName = txtUsername.Text;
+                            SV_home homeSV = new SV_home();
+                            homeSV.Show();
+                            this.Close();
+                        }
+                        else if (check_user1 != null)
+                        {
+                            MessageBox.Show("Thành công nhân viên");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sai");
+                        }
+                    }
+                });
+            });
+
+            // Ẩn hiệu ứng loading
+            pgrLoading.Visibility = Visibility.Collapsed;
         }
     }
 }
