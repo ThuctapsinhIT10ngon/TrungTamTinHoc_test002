@@ -73,9 +73,7 @@ namespace TrungTamTinHoc
             await Task.Delay(5000);
             await Task.Run(() =>
             {
-                var client = new MongoClient("mongodb://localhost:27017");
-                var database = client.GetDatabase("TrungTamTinHoc");
-                var collection = database.GetCollection<BsonDocument>("SINH_VIEN");
+                var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "SINH_VIEN");
 
                 string role = "sinh_vien";
                 var filter = Builders<BsonDocument>.Filter.And(
@@ -84,6 +82,8 @@ namespace TrungTamTinHoc
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role)
                 );
 
+                // Xử lý document tại đây
+
                 string role1 = "nhan_vien";
                 var filter1 = Builders<BsonDocument>.Filter.And(
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", user_name),
@@ -91,8 +91,8 @@ namespace TrungTamTinHoc
                              Builders<BsonDocument>.Filter.Eq("tai_khoan.role", role1)
                 );
 
-                var check_user = collection.Find(filter).FirstOrDefault();
-                var check_user1 = collection.Find(filter1).FirstOrDefault();
+                var check_user = connector.FindDocument(filter);
+                var check_user1 = connector.FindDocument(filter1);
 
                 // Cập nhật UI từ UI thread
                 Dispatcher.Invoke(() =>

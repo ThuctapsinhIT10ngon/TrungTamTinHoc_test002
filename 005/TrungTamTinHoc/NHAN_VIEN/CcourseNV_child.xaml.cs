@@ -1,7 +1,4 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +8,19 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrungTamTinHoc.SINH_VIEN
+namespace TrungTamTinHoc.NHAN_VIEN
 {
     /// <summary>
-    /// Interaction logic for celendarSV_child.xaml
+    /// Interaction logic for CcourseNV_child.xaml
     /// </summary>
-    public partial class celendarSV_child : UserControl
+    public partial class CcourseNV_child : UserControl
     {
-        public celendarSV_child()
+        public CcourseNV_child()
         {
             InitializeComponent();
         }
