@@ -28,7 +28,6 @@ namespace TrungTamTinHoc.SINH_VIEN
 
         private void filldata()
         {
-            txtTest.Text = GlobalVariables.UserName;
         }
 
         //Giao diện

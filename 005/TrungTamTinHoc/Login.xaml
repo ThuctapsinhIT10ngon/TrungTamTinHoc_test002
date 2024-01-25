@@ -184,6 +184,15 @@
                         Content="Ghi nhớ mật khẩu"
                         Foreground="Black" />
                 </StackPanel>
+                <Canvas>
+                    <ProgressBar
+                        x:Name="pgrLoading"
+                        Canvas.Top="20" Canvas.Left="220"
+                        IsIndeterminate="True"
+                        Style="{StaticResource MaterialDesignCircularProgressBar}"
+                        Value="0"
+                        Visibility="Hidden" />
+                </Canvas>
                 <Button
                     Width="150"
                     Height="40"
