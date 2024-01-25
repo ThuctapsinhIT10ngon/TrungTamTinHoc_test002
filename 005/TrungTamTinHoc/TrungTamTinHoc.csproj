@@ -140,7 +140,16 @@
     <Compile Include="GIANG_VIEN\homeGV_child.xaml.cs">
       <DependentUpon>homeGV_child.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GIANG_VIEN\infoGV_child.xaml.cs">
+      <DependentUpon>infoGV_child.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="NHAN_VIEN\homeNV_child.xaml.cs">
+      <DependentUpon>homeNV_child.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NHAN_VIEN\NV_home.xaml.cs">
+      <DependentUpon>NV_home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SINH_VIEN\celendarSV_child.xaml.cs">
       <DependentUpon>celendarSV_child.xaml</DependentUpon>
     </Compile>
@@ -170,6 +179,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GIANG_VIEN\infoGV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -182,6 +195,14 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NHAN_VIEN\homeNV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NHAN_VIEN\NV_home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SINH_VIEN\celendarSV_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,9 +269,7 @@
     <Resource Include="Image\download.png" />
     <Resource Include="Image\snapedit_1705742871954.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NHAN_VIEN\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

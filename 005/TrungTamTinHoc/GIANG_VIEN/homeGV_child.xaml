@@ -26,16 +26,15 @@
                             <TextBlock Text="THÔNG TIN GIẢNG VIÊN" Background="#a6a6a6" FontSize="15" Padding="2" />
                             <TextBlock Text="Họ và tên: " Margin="20,5,0,0" FontSize="13" />
                             <TextBlock Text="Mã số giảng viên: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Chuyên nghành đào tạo: " Margin="20,5,0,0" FontSize="13" Height="80" />
-                            <TextBlock Text="Ngày sinh: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Chuyên nghành đào tạo: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock Text="Ngày sinh: " Margin="20,65,0,0" FontSize="13" />
                             <TextBlock Text="Giới tính: " Margin="20,5,0,0" FontSize="13" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="" Margin="-30,29,0,0" FontSize="13" />
                             <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <StackPanel Margin="30,5,0,0" Orientation="Vertical" Height="85">
-                            </StackPanel>
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock Text="" Margin="30,5,0,0" Width="200" TextWrapping="Wrap" />
+                            <TextBlock Text="" Margin="-30,66,0,0" FontSize="13" />
                             <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
                         </StackPanel>
                     </StackPanel>
