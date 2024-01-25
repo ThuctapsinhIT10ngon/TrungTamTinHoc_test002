@@ -157,11 +157,26 @@
     </Compile>
     <Compile Include="GlobalVariables.cs" />
     <Compile Include="MongoDBConnector.cs" />
+    <Compile Include="NHAN_VIEN\CannouncementNV_child.xaml.cs">
+      <DependentUpon>CannouncementNV_child.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NHAN_VIEN\CcourseNV_child.xaml.cs">
+      <DependentUpon>CcourseNV_child.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NHAN_VIEN\CnewsNV_child.xaml.cs">
+      <DependentUpon>CnewsNV_child.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NHAN_VIEN\homeNV_child.xaml.cs">
       <DependentUpon>homeNV_child.xaml</DependentUpon>
     </Compile>
     <Compile Include="NHAN_VIEN\NV_home.xaml.cs">
       <DependentUpon>NV_home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NHAN_VIEN\statisticsNV_child.xaml.cs">
+      <DependentUpon>statisticsNV_child.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NHAN_VIEN\usermanagementNV_child.xaml.cs">
+      <DependentUpon>usermanagementNV_child.xaml</DependentUpon>
     </Compile>
     <Compile Include="SINH_VIEN\celendarSV_child.xaml.cs">
       <DependentUpon>celendarSV_child.xaml</DependentUpon>
@@ -208,11 +223,31 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NHAN_VIEN\CannouncementNV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NHAN_VIEN\CcourseNV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NHAN_VIEN\CnewsNV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NHAN_VIEN\homeNV_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NHAN_VIEN\NV_home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NHAN_VIEN\statisticsNV_child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NHAN_VIEN\usermanagementNV_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
