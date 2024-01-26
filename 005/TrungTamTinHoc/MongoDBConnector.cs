@@ -12,7 +12,6 @@ namespace TrungTamTinHoc
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> collection;
-        private IMongoCollection<BsonDocument> _collection;
 
         public MongoDBConnector(string connectionString, string databaseName, string collectionName)
         {
@@ -54,7 +53,7 @@ namespace TrungTamTinHoc
             })
             };
 
-            return _collection.Aggregate<BsonDocument>(pipeline).ToList();
+            return collection.Aggregate<BsonDocument>(pipeline).ToList();
         }
     }
 }

@@ -34,12 +34,12 @@ namespace TrungTamTinHoc.SINH_VIEN
 
         private void filldata()
         {
-            var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "SINH_VIEN");
+            var connector = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
 
             var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
 
             var search = connector.FindDocument(filter);
-            txtMa.Text = search["thong_tin"]["ma_sinhvien"].AsString;
+            txtMa.Text = search["thong_tin"]["ma"].AsString;
             txtHoten.Text = search["thong_tin"]["ho_ten"].AsString;
             txtKhoa.Text = search["thong_tin"]["khoa_daotao"].AsString;
 

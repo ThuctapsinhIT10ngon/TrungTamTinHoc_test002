@@ -35,7 +35,7 @@ namespace TrungTamTinHoc.GIANG_VIEN
 
         private void filldata()
         {
-            var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "GIANG_VIEN");
+            var connector = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "GIANG_VIEN");
 
             var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
 

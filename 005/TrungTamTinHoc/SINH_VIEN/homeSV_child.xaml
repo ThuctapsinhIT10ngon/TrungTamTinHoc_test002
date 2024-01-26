@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TrungTamTinHoc.SINH_VIEN"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+
              mc:Ignorable="d"
              d:DesignHeight="630" d:DesignWidth="1100">
+
     <Grid Background="#F1F1F1">
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -21,7 +25,9 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal">
-                        <Image Width="150" Height="200" Margin="0 -2 0 0" />
+                        <StackPanel MouseLeftButtonDown="Image_MouseLeftButtonDown" Background="Transparent">
+                            <Image x:Name="imgAnh" Width="150" Height="200" Margin="0 -2 0 0" />
+                        </StackPanel>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="THÔNG TIN SINH VIÊN" Background="#a6a6a6" FontSize="15" Padding="2" />
                             <TextBlock Text="Họ và tên: " Margin="20,5,0,0" FontSize="13" />
@@ -33,26 +39,26 @@
                             <TextBlock Text="Giới tính: " Margin="20,5,0,0" FontSize="13" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="" Margin="-30,29,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
-                            <TextBlock Text="" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtHoTen" Margin="-30,29,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtMssv" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtKhoadt" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtHedaotao" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtCNganh" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtNgaysinh" Margin="-30,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtGtinh" Margin="-30,5,0,0" FontSize="13" />
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <TextBlock Text="Địa chỉ: " Margin="15,5,0,0" FontSize="13" />
-                        <TextBlock Text="" Margin="10,5,0,0" FontSize="13" TextWrapping="Wrap" Width="520" Height="35" />
+                        <TextBlock x:Name="txtDiachi" Margin="10,5,0,0" FontSize="13" TextWrapping="Wrap" Width="520" Height="35" />
                     </StackPanel>
                     <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 5 0 0">
                         <TextBlock Text="Quốc tịch: " Margin="15,5,0,0" FontSize="13" />
-                        <TextBlock Text="" Margin="5,5,0,0" FontSize="13" Width="100" />
+                        <TextBlock x:Name="txtQuoctich" Margin="5,5,0,0" FontSize="13" Width="100" />
                         <TextBlock Text="Gmail: " Margin="10,5,0,0" FontSize="13" />
-                        <TextBlock Text="" Margin="5,5,0,0" FontSize="13" Width="150" />
+                        <TextBlock x:Name="txtGmail" Margin="5,5,0,0" FontSize="13" Width="150" />
                         <TextBlock Text="Số điện thoại: " Margin="5,5,0,0" FontSize="13" />
-                        <TextBlock Text="" Margin="5,5,0,0" FontSize="13" />
+                        <TextBlock x:Name="txtSdt" Margin="5,5,0,0" FontSize="13" />
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -78,7 +84,9 @@
                             Content="Windows" />
                     </ComboBox>
                 </StackPanel>
-                <StackPanel />
+                <Grid>
+                    <lvc:CartesianChart Height="250" Margin="10" />
+                </Grid>
             </StackPanel>
             <StackPanel x:Name="test" Width="400" Margin="10"  Orientation="Vertical">
                 <StackPanel Background="White" Height="140" Orientation="Vertical">

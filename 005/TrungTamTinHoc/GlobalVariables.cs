@@ -11,5 +11,7 @@ namespace TrungTamTinHoc
         public static string UserName { get; set; }
 
         public static string ConnectionMongo { get; set; }
+
+        public static string NameDatabaseMongo { get; set; }
     }
 }

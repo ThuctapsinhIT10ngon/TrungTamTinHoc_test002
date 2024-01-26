@@ -32,74 +32,118 @@ namespace TrungTamTinHoc.NHAN_VIEN
         public usermanagementNV_child()
         {
             InitializeComponent();
-            filldata();
+            fillloaddata();
+        }
+
+        private void fillloaddata()
+        {
+            var connector_CGV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "GIANG_VIEN");
+            var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
+
+            var filter = Builders<BsonDocument>.Filter.Empty;
+
+            var document_1 = connector_CGV.FindAllDocument(filter);
+            var document_2 = connector_CSV.FindAllDocument(filter);
+
+            var doc_all = document_1.Concat(document_2).ToList();
+
+            List<User> users = new List<User>();
+            foreach (var doc in doc_all)
+            {
+                var u_name = doc["tai_khoan"]["user_name"].AsString;
+                var u_role = doc["tai_khoan"]["role"].AsString;
+                var name = doc["thong_tin"]["ho_ten"].AsString;
+                var note = doc["ghi_chu"].AsString;
+                var mand = doc["thong_tin"]["ma"].AsString;
+                users.Add(new User() { User_name = u_name, Role = u_role, Name = name, Ghi_chu = note, MSND = mand });
+            }
+            dgUsers.ItemsSource = users;
         }
 
         public class User
         {
-            public string Name { get; set; }
+            public string User_name { get; set; }
             public string Role { get; set; }
+            public string Name { get; set; }
+            public string Ghi_chu { get; set; }
+
+            public string MSND { get; set; }
         }
 
-        private void filldata()
+        private void cboChose_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var connector_CGV = new MongoDBConnector(GlobalVariables.ConnectionMongo, "TrungTamTinHoc", "GIANG_VIEN");
-            var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, "TrungTamTinHoc", "SINH_VIEN");
+            if (cboChose.SelectedIndex == 0)
+            {
+                fill_withGV();
+            }
+            else
+            {
+                fill_withSV();
+            }
+        }
 
-            var documents = connector_CGV.Lookup("SINH_VIEN", localField, foreignField, asField);
-            //var filter = Builders<BsonDocument>.Filter.Empty;
+        private void fill_withSV()
+        {
+            var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
+            var filter = Builders<BsonDocument>.Filter.Empty;
+            var document_1 = connector_CSV.FindAllDocument(filter);
 
-            //var doc1 = connector_CGV.FindAllDocument(filter);
-            //var doc2 = connector_CSV.FindAllDocument(filter);
+            List<User> users = new List<User>();
+            foreach (var doc in document_1)
+            {
+                var u_name = doc["tai_khoan"]["user_name"].AsString;
+                var u_role = doc["tai_khoan"]["role"].AsString;
+                var name = doc["thong_tin"]["ho_ten"].AsString;
+                var note = doc["ghi_chu"].AsString;
+                var mand = doc["thong_tin"]["ma"].AsString;
+                users.Add(new User() { User_name = u_name, Role = u_role, Name = name, Ghi_chu = note, MSND = mand });
+            }
+            dgUsers.ItemsSource = users;
+        }
 
-            //var combinedDocuments = doc1.Concat(doc2.ToList()).ToList();
+        private void fill_withGV()
+        {
+            var connector_CGV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "GIANG_VIEN");
+            var filter = Builders<BsonDocument>.Filter.Empty;
+            var document_1 = connector_CGV.FindAllDocument(filter);
 
-            //List<User> users = combinedDocuments.Select(doc => BsonSerializer.Deserialize<User>(doc)).ToList();
+            List<User> users = new List<User>();
+            foreach (var doc in document_1)
+            {
+                var u_name = doc["tai_khoan"]["user_name"].AsString;
+                var u_role = doc["tai_khoan"]["role"].AsString;
+                var name = doc["thong_tin"]["ho_ten"].AsString;
+                var note = doc["ghi_chu"].AsString;
+                var mand = doc["thong_tin"]["ma"].AsString;
+                users.Add(new User() { User_name = u_name, Role = u_role, Name = name, Ghi_chu = note, MSND = mand });
+            }
+            dgUsers.ItemsSource = users;
+        }
 
-            //DataGridTextColumn userColumn = new DataGridTextColumn();
-            //userColumn.Header = "UserName";
-            //userColumn.Binding = new Binding("tai_khoan.user_name");
-            //dgvDanhsach.Columns.Add(userColumn);
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var connector_CGV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "GIANG_VIEN");
+            var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
 
-            //DataGridTextColumn roleColumn = new DataGridTextColumn();
-            //roleColumn.Header = "Role";
-            //roleColumn.Binding = new Binding("tai_khoan.role");
-            //dgvDanhsach.Columns.Add(roleColumn);
+            string use_name = txtTimuser.Text;
+            var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", use_name);
 
-            //foreach (var document in combinedDocuments)
-            //{
-            //    if (document["tai_khoan"].AsBsonDocument.Contains("role"))
-            //    {
-            //        // Tạo một đối tượng dữ liệu mới
-            //        var dataObject = new
-            //        {
-            //            UserName = document["tai_khoan"]["user_name"].AsString,
-            //            Role = document["tai_khoan"]["role"].AsString
-            //        };
+            var document_1 = connector_CGV.FindAllDocument(filter);
+            var document_2 = connector_CSV.FindAllDocument(filter);
 
-            //        // Thêm đối tượng dữ liệu vào DataGrid
-            //        dgvDanhsach.Items.Add(dataObject);
-            //    }
-            //    else
-            //    {
-            //        // Tạo một đối tượng dữ liệu mới chỉ với trường "user_name"
-            //        var dataObject = new
-            //        {
-            //            UserName = document["tai_khoan"]["user_name"].AsString,
-            //            Role = "Không có"
-            //        };
+            var doc_all = document_1.Concat(document_2).ToList();
 
-            //        // Thêm đối tượng dữ liệu vào DataGrid
-            //        dgvDanhsach.Items.Add(dataObject);
-            //    }
-            //}
-            // Kết nối đến MongoDB
-
-            // Tạo ObservableCollection trong ViewModel hoặc Code-behind
-
-            // Đặt ItemsSource của DataGrid thành ObservableCollection
-
-            // Khi bạn muốn thêm mục vào DataGrid, chỉ cần thêm mục vào ObservableCollection
+            List<User> users = new List<User>();
+            foreach (var doc in doc_all)
+            {
+                var u_name = doc["tai_khoan"]["user_name"].AsString;
+                var u_role = doc["tai_khoan"]["role"].AsString;
+                var name = doc["thong_tin"]["ho_ten"].AsString;
+                var note = doc["ghi_chu"].AsString;
+                var mand = doc["thong_tin"]["ma"].AsString;
+                users.Add(new User() { User_name = u_name, Role = u_role, Name = name, Ghi_chu = note, MSND = mand });
+            }
+            dgUsers.ItemsSource = users;
         }
     }
 }
