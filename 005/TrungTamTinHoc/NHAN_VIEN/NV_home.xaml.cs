@@ -44,13 +44,20 @@ namespace TrungTamTinHoc.NHAN_VIEN
             txtHoten.Text = search["thong_tin"]["ho_ten"].AsString;
 
             //add avatar
-            string imagePath = search["_file"]["img_avatar"].AsString;
-            string binDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
-            string projectDirectory = Directory.GetParent(binDirectory).Parent.FullName;
-            string appDirectory = Directory.GetParent(projectDirectory).FullName;
-            string add_avatar = System.IO.Path.Combine(appDirectory, imagePath);
-            var imageUri = new Uri(add_avatar, UriKind.RelativeOrAbsolute);
-            img_avatar.Source = new BitmapImage(imageUri);
+            try
+            {
+                string imagePath = search["_file"]["img_avatar"].AsString;
+                string binDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                string projectDirectory = Directory.GetParent(binDirectory).Parent.FullName;
+                string appDirectory = Directory.GetParent(projectDirectory).FullName;
+                string add_avatar = System.IO.Path.Combine(appDirectory, imagePath);
+                var imageUri = new Uri(add_avatar, UriKind.RelativeOrAbsolute);
+                img_avatar.Source = new BitmapImage(imageUri);
+            }
+            catch
+            {
+                img_avatar.Source = null;
+            }
         }
 
         //Giao diện
@@ -145,14 +152,14 @@ namespace TrungTamTinHoc.NHAN_VIEN
                     }
                     break;
 
-                case "Stack_id":
+                case "Stack_userm":
                     if (stackspace != null)
                     {
                         space.Children.Remove(stackspace);
                         stackspace = null;
 
-                        infoSV_child infoSV = new infoSV_child();
-                        space.Children.Add(infoSV);
+                        usermanagementNV_child muserNV = new usermanagementNV_child();
+                        space.Children.Add(muserNV);
                     }
                     break;
 

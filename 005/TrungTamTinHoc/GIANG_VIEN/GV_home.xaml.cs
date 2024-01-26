@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,9 @@ namespace TrungTamTinHoc.GIANG_VIEN
         {
             InitializeComponent();
             filldata();
+
+            homeGV_child homeGV = new homeGV_child();
+            space.Children.Add(homeGV);
         }
 
         private void filldata()
@@ -38,6 +42,22 @@ namespace TrungTamTinHoc.GIANG_VIEN
             var search = connector.FindDocument(filter);
             txtMa.Text = GlobalVariables.UserName;
             txtHoten.Text = search["thong_tin"]["ho_ten"].AsString;
+
+            //add avatar
+            try
+            {
+                string imagePath = search["_file"]["img_avatar"].AsString;
+                string binDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                string projectDirectory = Directory.GetParent(binDirectory).Parent.FullName;
+                string appDirectory = Directory.GetParent(projectDirectory).FullName;
+                string add_avatar = System.IO.Path.Combine(appDirectory, imagePath);
+                var imageUri = new Uri(add_avatar, UriKind.RelativeOrAbsolute);
+                img_avatar.Source = new BitmapImage(imageUri);
+            }
+            catch
+            {
+                img_avatar.Source = null;
+            }
         }
 
         //Giao diện

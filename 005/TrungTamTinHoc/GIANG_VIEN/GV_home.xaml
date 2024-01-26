@@ -351,7 +351,7 @@
                                     Width="160"
                                     Height="40"
                                     Margin="20,0,0,0"
-                                    Fill="Blue" />
+                                    Fill="#0DC5FF" />
                                 <TextBlock
                                     x:Name="txtHoten"
                                     Width="130"
@@ -379,9 +379,14 @@
                             <Ellipse
                                 Width="40"
                                 Height="40"
-                                Fill="Blue"
+                                Fill="White"
                                 Stroke="Black"
                                 StrokeThickness=".5" />
+                            <Image x:Name="img_avatar" Width="40" Height="40">
+                                <Image.Clip>
+                                    <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20" />
+                                </Image.Clip>
+                            </Image>
                         </Canvas>
                         <StackPanel x:Name="logout_icon"
                                     HorizontalAlignment="Right"

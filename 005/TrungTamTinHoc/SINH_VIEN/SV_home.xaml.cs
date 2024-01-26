@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +39,25 @@ namespace TrungTamTinHoc.SINH_VIEN
             var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
 
             var search = connector.FindDocument(filter);
-            txtMa.Text = GlobalVariables.UserName;
+            txtMa.Text = search["thong_tin"]["ma_sinhvien"].AsString;
             txtHoten.Text = search["thong_tin"]["ho_ten"].AsString;
+            txtKhoa.Text = search["thong_tin"]["khoa_daotao"].AsString;
+
+            //add avatar
+            try
+            {
+                string imagePath = search["_file"]["img_avatar"].AsString;
+                string binDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                string projectDirectory = Directory.GetParent(binDirectory).Parent.FullName;
+                string appDirectory = Directory.GetParent(projectDirectory).FullName;
+                string add_avatar = System.IO.Path.Combine(appDirectory, imagePath);
+                var imageUri = new Uri(add_avatar, UriKind.RelativeOrAbsolute);
+                img_avatar.Source = new BitmapImage(imageUri);
+            }
+            catch
+            {
+                img_avatar.Source = null;
+            }
         }
 
         //Giao diện

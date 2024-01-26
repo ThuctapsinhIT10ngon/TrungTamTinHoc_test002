@@ -12,6 +12,7 @@ namespace TrungTamTinHoc
     {
         private IMongoDatabase database;
         private IMongoCollection<BsonDocument> collection;
+        private IMongoCollection<BsonDocument> _collection;
 
         public MongoDBConnector(string connectionString, string databaseName, string collectionName)
         {
@@ -33,6 +34,27 @@ namespace TrungTamTinHoc
         public BsonDocument FindDocument(FilterDefinition<BsonDocument> filter)
         {
             return this.collection.Find(filter).FirstOrDefault();
+        }
+
+        public List<BsonDocument> FindAllDocument(FilterDefinition<BsonDocument> filter)
+        {
+            return this.collection.Find(filter).ToList();
+        }
+
+        public List<BsonDocument> Lookup(string fromCollection, string localField, string foreignField, string asField)
+        {
+            var pipeline = new BsonDocument[]
+            {
+            new BsonDocument("$lookup", new BsonDocument
+            {
+                { "from", fromCollection },
+                { "localField", localField },
+                { "foreignField", foreignField },
+                { "as", asField }
+            })
+            };
+
+            return _collection.Aggregate<BsonDocument>(pipeline).ToList();
         }
     }
 }

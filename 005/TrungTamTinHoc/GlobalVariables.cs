@@ -9,5 +9,7 @@ namespace TrungTamTinHoc
     public static class GlobalVariables
     {
         public static string UserName { get; set; }
+
+        public static string ConnectionMongo { get; set; }
     }
 }

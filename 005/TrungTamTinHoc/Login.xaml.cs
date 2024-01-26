@@ -31,6 +31,8 @@ namespace TrungTamTinHoc
         {
             InitializeComponent();
             mongodconnet();
+
+            GlobalVariables.ConnectionMongo = "mongodb://localhost:27017";
         }
 
         private void mongodconnet()
@@ -73,8 +75,8 @@ namespace TrungTamTinHoc
             await Task.Delay(2000);
             await Task.Run(() =>
             {
-                var connector = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "GIANG_VIEN");
-                var connector1 = new MongoDBConnector("mongodb://localhost:27017", "TrungTamTinHoc", "SINH_VIEN");
+                var connector = new MongoDBConnector(GlobalVariables.ConnectionMongo, "TrungTamTinHoc", "GIANG_VIEN");
+                var connector1 = new MongoDBConnector(GlobalVariables.ConnectionMongo, "TrungTamTinHoc", "SINH_VIEN");
 
                 string role = "giang_vien";
                 var filter_GV = Builders<BsonDocument>.Filter.And(
