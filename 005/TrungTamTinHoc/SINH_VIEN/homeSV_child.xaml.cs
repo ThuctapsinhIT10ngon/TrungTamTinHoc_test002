@@ -35,7 +35,6 @@ namespace TrungTamTinHoc.SINH_VIEN
 
         private void DrawChart()
         {
-            throw new NotImplementedException();
         }
 
         private void filldata()

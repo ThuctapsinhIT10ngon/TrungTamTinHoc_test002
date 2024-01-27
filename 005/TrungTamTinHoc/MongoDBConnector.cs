@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.IO;
 
 namespace TrungTamTinHoc
 {
@@ -54,6 +55,21 @@ namespace TrungTamTinHoc
             };
 
             return collection.Aggregate<BsonDocument>(pipeline).ToList();
+        }
+    }
+
+    public class MongoDBConnector_1
+    {
+        private IMongoDatabase database;
+        private IMongoCollection<dynamic> _collection;
+
+        public IMongoCollection<dynamic> Collection => _collection;
+
+        public MongoDBConnector_1(string connectionString, string databaseName, string collectionName)
+        {
+            var client = new MongoClient(connectionString);
+            this.database = client.GetDatabase(databaseName);
+            this._collection = database.GetCollection<dynamic>(collectionName);
         }
     }
 }

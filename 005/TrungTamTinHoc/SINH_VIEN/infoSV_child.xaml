@@ -64,7 +64,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
                             <TextBlock Text="Mã số sinh viên: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
-                            <TextBox Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
+                            <TextBox x:Name="txtMasv" Margin="20 0 0 0" Width="150" VerticalAlignment="Center"
                                      materialDesign:HintAssist.Hint=""
                                      IsReadOnly="True" />
                         </StackPanel>
@@ -96,7 +96,7 @@
                             <TextBlock Text="Ngày sinh: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
                             <DatePicker
                                 x:Name="dtpNgaysinh"
-                                Text="12/12/2022"
+                                FontSize="14"
                                 Margin="20 0 0 0" Width="150"
                                 materialDesign:HintAssist.Hint=""
                                 materialDesign:TextFieldAssist.HasClearButton="True"
@@ -107,7 +107,7 @@
                         <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
                             <TextBlock Text="Giới tính: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton x:Name="rbNam" Margin="20 0 0 0" Content="Nam" IsEnabled="False" IsChecked="True" />
+                                <RadioButton x:Name="rbNam" Margin="20 0 0 0" Content="Nam" IsEnabled="False" />
                                 <RadioButton x:Name="rbNu" Margin="20 0 0 0" Content="Nữ" IsEnabled="False" />
                             </StackPanel>
                         </StackPanel>
@@ -207,8 +207,14 @@
                 </ToggleButton>
                 <TextBlock Text="Chỉnh sửa thông tin" VerticalAlignment="Center" Margin="5 0 0 0" />
             </StackPanel>
-            <StackPanel x:Name="btnEdit_OK" Canvas.Top="600" Canvas.Left="180" Width="100" Height="30">
-            </StackPanel>
+            <StackPanel x:Name="btnEdit_OK" Canvas.Top="600" Canvas.Left="180" Width="100" Height="30" />
+            <Canvas>
+                <ProgressBar
+                    x:Name="pgbLoad"
+                    Canvas.Top="215" Canvas.Left="10"
+                    IsIndeterminate="True" Width="677.75"
+                    Visibility="Hidden" />
+            </Canvas>
         </Canvas>
     </Grid>
 </UserControl>
