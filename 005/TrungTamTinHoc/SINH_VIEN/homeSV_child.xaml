@@ -5,12 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TrungTamTinHoc.SINH_VIEN"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-
              mc:Ignorable="d"
              d:DesignHeight="630" d:DesignWidth="1100">
-
     <Grid Background="#F1F1F1">
         <Grid.RowDefinitions>
             <RowDefinition />
