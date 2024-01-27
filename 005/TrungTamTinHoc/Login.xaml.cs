@@ -110,7 +110,10 @@ namespace TrungTamTinHoc
                     {
                         if (check_userGV != null)
                         {
-                            MessageBox.Show("Đăng nhập giảng viên thành công");
+                            GlobalVariables.UserName = txtUsername.Text;
+                            GV_home homeNV = new GV_home();
+                            homeNV.Show();
+                            this.Close();
                         }
                         else if (check_userNV != null)
                         {
