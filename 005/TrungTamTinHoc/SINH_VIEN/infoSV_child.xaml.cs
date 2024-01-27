@@ -44,7 +44,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             txtkhoa.Text = doc["thong_tin"]["khoa_daotao"].AsString;
             txtHedaotao.Text = doc["thong_tin"]["he_daotao"].AsString;
             txtCnghanh.Text = doc["thong_tin"]["chuyen_nganh"].AsString;
-            //dtpNgaysinh.SelectedDate = DateTime.ParseExact(doc["thong_tin"]["ngay_sinh"].AsString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            dtpNgaysinh.SelectedDate = DateTime.ParseExact(doc["thong_tin"]["ngay_sinh"].AsString, "dd/MM/yyyy", CultureInfo.InvariantCulture).Date;
             string check = doc["thong_tin"]["gioi_tinh"].AsString;
             if (check == "Nam")
             {
@@ -74,7 +74,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             string _khoa = txtkhoa.Text;
             string _hedaotao = txtHedaotao.Text;
             string _chuyennganh = txtCnghanh.Text;
-            //string _ngaysinh = dtpNgaysinh.SelectedDate.ToString();
+            string _ngaysinh = dtpNgaysinh.SelectedDate.ToString();
             if (rbNam.IsChecked == true)
             {
                 _gioitinh = "Nam";
@@ -83,7 +83,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             {
                 _gioitinh = "Nữ";
             }
-            string _diachi = txtDiachi.Text;
+            string _diachi = txtDiachi.Text; 
             string _quoctich = txtQuoctich.Text;
             string _gmail = txtGmail.Text;
             string _sdt = txtSDT.Text;
@@ -121,6 +121,8 @@ namespace TrungTamTinHoc.SINH_VIEN
         {
             if (tglEditinfo.IsChecked == true)
             {
+                //tạo count = 0  cho phép nó chỉnh sửa 1 lân duy nhất rôi hỏi nó chắc chắn không nếu chắc thì đổi 
+                //lấn sau sửa thi phải lên trường sửa
                 MessageBoxResult dr = MessageBox.Show("Bạn muốn sửa thông tin cá nhân?", "Thông báo", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
                 if (dr == MessageBoxResult.OK)
                 {
