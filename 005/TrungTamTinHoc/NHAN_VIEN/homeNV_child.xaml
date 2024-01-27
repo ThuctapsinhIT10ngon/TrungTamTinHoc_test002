@@ -24,14 +24,14 @@
                         <Image Width="150" Height="200" Margin="0 -2 0 0" Source="/Image/download.png" />
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="THÔNG TIN NHÂN VIÊN" Background="#a6a6a6" FontSize="15" Padding="2" />
-                            <TextBlock Text="Họ và tên: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Mã số nhân viên: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Ngày sinh: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Giới tính: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Địa chỉ: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Quốc tịch: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Gmail: " Margin="20,5,0,0" FontSize="13" />
-                            <TextBlock Text="Số điện thoại: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtHoTen" Text="Họ và tên: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtMaNV" Text="Mã số nhân viên: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtNgaySinh" Text="Ngày sinh: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtGioiTinh" Text="Giới tính: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtDiaChi" Text="Địa chỉ: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtQuocTich" Text="Quốc tịch: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtGmail" Text="Gmail: " Margin="20,5,0,0" FontSize="13" />
+                            <TextBlock x:Name="txtSDT" Text="Số điện thoại: " Margin="20,5,0,0" FontSize="13" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="" Margin="-30,29,0,0" FontSize="13" />
