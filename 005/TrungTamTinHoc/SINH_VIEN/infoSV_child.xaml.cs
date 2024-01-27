@@ -100,7 +100,7 @@ namespace TrungTamTinHoc.SINH_VIEN
                             .Set("thong_tin.khoa_daotao", _khoa)
                             .Set("thong_tin.he_daotao", _hedaotao)
                             .Set("thong_tin.chuyen_nganh", _chuyennganh)
-                            //.Set("thong_tin.ngay_sinh", _ngaysinh)
+                            .Set("thong_tin.ngay_sinh", _ngaysinh)
                             .Set("thong_tin.gioi_tinh", _gioitinh)
                             .Set("thong_tin.dia_chi", _diachi)
                             .Set("thong_tin.quoc_tich", _quoctich)

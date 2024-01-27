@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using Microsoft.Win32;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
@@ -50,7 +52,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             txtKhoadt.Text = document["thong_tin"]["khoa_daotao"].AsString;
             txtHedaotao.Text = document["thong_tin"]["he_daotao"].AsString;
             txtCNganh.Text = document["thong_tin"]["chuyen_nganh"].AsString;
-            txtNgaysinh.Text = document["thong_tin"]["ngay_sinh"].AsString;
+            //txtNgaysinh.Text = document["thong_tin"]["ngay_sinh"].AsString;
             txtGtinh.Text = document["thong_tin"]["gioi_tinh"].AsString;
             txtDiachi.Text = document["thong_tin"]["dia_chi"].AsString;
             txtQuoctich.Text = document["thong_tin"]["quoc_tich"].AsString;
@@ -64,6 +66,20 @@ namespace TrungTamTinHoc.SINH_VIEN
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+        }
+
+        private void CartesianChart_Loaded(object sender, RoutedEventArgs e)
+        {
+            CartesianChart chart = new CartesianChart();
+            chart.Series = new SeriesCollection
+             {
+                new LineSeries
+                {
+                    Title = "Thống kế",
+                    Values = new ChartValues<double>{1,2,3}
+                }
+            };
+            Chart.Children.Add(chart);
         }
     }
 }
