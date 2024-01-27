@@ -68,7 +68,8 @@ namespace TrungTamTinHoc
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             // Hiển thị hiệu ứng loading
-            pgrLoading.Visibility = Visibility.Visible;
+           
+            pgrLoading.Visibility = Visibility.Visible; 
 
             string user_name = txtUsername.Text;
             string user_pass = txtUserpass.Password;
@@ -109,7 +110,10 @@ namespace TrungTamTinHoc
                     {
                         if (check_userGV != null)
                         {
-                            MessageBox.Show("Đăng nhập giảng viên thành công");
+                            GlobalVariables.UserName = txtUsername.Text;
+                            GV_home homeNV = new GV_home();
+                            homeNV.Show();
+                            this.Close();
                         }
                         else if (check_userNV != null)
                         {

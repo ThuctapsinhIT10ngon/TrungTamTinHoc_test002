@@ -81,8 +81,8 @@
                             Content="Windows" />
                     </ComboBox>
                 </StackPanel>
-                <Grid>
-                    <lvc:CartesianChart Height="250" Margin="10" />
+                <Grid x:Name="Chart">
+                    <lvc:CartesianChart Height="250" Margin="10" Loaded="CartesianChart_Loaded" />
                 </Grid>
             </StackPanel>
             <StackPanel x:Name="test" Width="400" Margin="10"  Orientation="Vertical">

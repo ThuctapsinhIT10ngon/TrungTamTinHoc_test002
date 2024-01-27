@@ -194,6 +194,8 @@
                         Visibility="Hidden" />
                 </Canvas>
                 <Button
+                    IsDefault="true"
+                    x:Name="enter"
                     Width="150"
                     Height="40"
                     Margin="0,10,0,0"

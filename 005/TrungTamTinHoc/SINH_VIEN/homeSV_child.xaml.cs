@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using Microsoft.Win32;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
@@ -64,6 +66,20 @@ namespace TrungTamTinHoc.SINH_VIEN
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+        }
+
+        private void CartesianChart_Loaded(object sender, RoutedEventArgs e)
+        {
+            CartesianChart chart = new CartesianChart();
+            chart.Series = new SeriesCollection
+             {
+                new LineSeries
+                {
+                    Title = "Thống kế",
+                    Values = new ChartValues<double>{1,2,3}
+                }
+            };
+            Chart.Children.Add(chart);
         }
     }
 }
