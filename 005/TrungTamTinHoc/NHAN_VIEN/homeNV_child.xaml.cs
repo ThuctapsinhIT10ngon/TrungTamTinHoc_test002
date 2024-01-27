@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,24 @@ namespace TrungTamTinHoc.NHAN_VIEN
         public homeNV_child()
         {
             InitializeComponent();
+            filldata();
+            //DrawChart();
+        }
+
+        private void DrawChart()
+        {
+            
+        }
+
+        private void filldata()
+        {
+            //txtNgaySinh.Text = document["thongtin"]["ngay_sinh"].AsString;
+            //txtGioiTinh.Text = document["thongtin"]["gioi_tinh"].AsString;
+            //txtGmail.Text = document["thongtin"]["gmail"].AsString;
+            //txtDiaChi.Text = document["thongtin"]["dia_chi"].AsString;
+            //txtQuocTich.Text = document["thongtin"]["quoc_tich"].AsString;
+            //txtSDT.Text = document["thongtin"]["sdt"].AsString;
         }
     }
+
 }
