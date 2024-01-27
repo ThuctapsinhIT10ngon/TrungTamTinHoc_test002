@@ -39,6 +39,8 @@ namespace TrungTamTinHoc.SINH_VIEN
         {
         }
 
+        public DateTime SelectedDatef { get; set; }
+
         private void filldata()
         {
             var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
@@ -53,6 +55,10 @@ namespace TrungTamTinHoc.SINH_VIEN
             txtHedaotao.Text = document["thong_tin"]["he_daotao"].AsString;
             txtCNganh.Text = document["thong_tin"]["chuyen_nganh"].AsString;
             //txtNgaysinh.Text = document["thong_tin"]["ngay_sinh"].AsString;
+
+            SelectedDatef = document["thong_tin"]["ngay_sinh"].ToUniversalTime();
+            txtNgaysinh.Text = SelectedDatef.ToString("dd/MM/yyyy");
+
             txtGtinh.Text = document["thong_tin"]["gioi_tinh"].AsString;
             txtDiachi.Text = document["thong_tin"]["dia_chi"].AsString;
             txtQuoctich.Text = document["thong_tin"]["quoc_tich"].AsString;

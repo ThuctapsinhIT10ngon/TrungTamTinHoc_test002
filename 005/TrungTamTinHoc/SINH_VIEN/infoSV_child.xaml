@@ -59,7 +59,7 @@
                             <TextBox x:Name="txtHoten" Margin="100 0 0 0" Width="150" VerticalAlignment="Center"
                                      materialDesign:HintAssist.Hint=""
                                      materialDesign:TextFieldAssist.UnderlineBrush="Blue"
-                                     IsReadOnly="True" TextChanged="txtHoten_TextChanged" />
+                                     IsReadOnly="True" />
                             <materialDesign:PackIcon Kind="LeadPencil" VerticalAlignment="Center" Foreground="DarkBlue" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
