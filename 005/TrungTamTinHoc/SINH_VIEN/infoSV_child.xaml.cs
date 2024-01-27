@@ -29,35 +29,46 @@ namespace TrungTamTinHoc.SINH_VIEN
         public infoSV_child()
         {
             InitializeComponent();
+            this.DataContext = this;
             filldatato();
         }
 
-        private void filldatato()
+        private async void filldatato()
         {
-            var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
-
-            var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
-            var doc = connector_CSV.FindDocument(filter);
-
-            txtHoten.Text = doc["thong_tin"]["ho_ten"].AsString;
-            txtMasv.Text = doc["thong_tin"]["ma"].AsString;
-            txtkhoa.Text = doc["thong_tin"]["khoa_daotao"].AsString;
-            txtHedaotao.Text = doc["thong_tin"]["he_daotao"].AsString;
-            txtCnghanh.Text = doc["thong_tin"]["chuyen_nganh"].AsString;
-            dtpNgaysinh.SelectedDate = DateTime.ParseExact(doc["thong_tin"]["ngay_sinh"].AsString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            string check = doc["thong_tin"]["gioi_tinh"].AsString;
-            if (check == "Nam")
+            await Task.Delay(1000);
+            await Task.Run(() =>
             {
-                rbNam.IsChecked = true;
-            }
-            else
-            {
-                rbNu.IsChecked = true;
-            }
-            txtDiachi.Text = doc["thong_tin"]["dia_chi"].AsString;
-            txtQuoctich.Text = doc["thong_tin"]["quoc_tich"].AsString;
-            txtGmail.Text = doc["thong_tin"]["gmail"].AsString;
-            txtSDT.Text = doc["thong_tin"]["sdt"].AsString;
+                var connector_CSV = new MongoDBConnector(GlobalVariables.ConnectionMongo, GlobalVariables.NameDatabaseMongo, "SINH_VIEN");
+                var filter = Builders<BsonDocument>.Filter.Eq("tai_khoan.user_name", GlobalVariables.UserName);
+                var doc = connector_CSV.FindDocument(filter);
+
+                // Cập nhật UI từ UI thread
+                Dispatcher.Invoke(() =>
+                {
+                    txtHoten.Text = doc["thong_tin"]["ho_ten"].AsString;
+                    txtMasv.Text = doc["thong_tin"]["ma"].AsString;
+                    txtkhoa.Text = doc["thong_tin"]["khoa_daotao"].AsString;
+                    txtHedaotao.Text = doc["thong_tin"]["he_daotao"].AsString;
+                    txtCnghanh.Text = doc["thong_tin"]["chuyen_nganh"].AsString;
+
+                    SelectedDatef = doc["thong_tin"]["ngay_sinh"].ToUniversalTime();
+                    dtpNgaysinh.SelectedDate = SelectedDatef;
+
+                    string check = doc["thong_tin"]["gioi_tinh"].AsString;
+                    if (check == "Nam")
+                    {
+                        rbNam.IsChecked = true;
+                    }
+                    else
+                    {
+                        rbNu.IsChecked = true;
+                    }
+                    txtDiachi.Text = doc["thong_tin"]["dia_chi"].AsString;
+                    txtQuoctich.Text = doc["thong_tin"]["quoc_tich"].AsString;
+                    txtGmail.Text = doc["thong_tin"]["gmail"].AsString;
+                    txtSDT.Text = doc["thong_tin"]["sdt"].AsString;
+                });
+            });
         }
 
         private void Shape_MouseUp(object sender, MouseButtonEventArgs e)
@@ -65,6 +76,7 @@ namespace TrungTamTinHoc.SINH_VIEN
         }
 
         public string _gioitinh;
+        public DateTime SelectedDatef { get; set; }
 
         private async void SuaThongTin_Click(object sender, RoutedEventArgs e)
         {
@@ -74,7 +86,9 @@ namespace TrungTamTinHoc.SINH_VIEN
             string _khoa = txtkhoa.Text;
             string _hedaotao = txtHedaotao.Text;
             string _chuyennganh = txtCnghanh.Text;
-            string _ngaysinh = dtpNgaysinh.SelectedDate.ToString();
+            //sửa lỗi
+            SelectedDatef = dtpNgaysinh.SelectedDate.Value;
+
             if (rbNam.IsChecked == true)
             {
                 _gioitinh = "Nam";
@@ -100,7 +114,7 @@ namespace TrungTamTinHoc.SINH_VIEN
                             .Set("thong_tin.khoa_daotao", _khoa)
                             .Set("thong_tin.he_daotao", _hedaotao)
                             .Set("thong_tin.chuyen_nganh", _chuyennganh)
-                            .Set("thong_tin.ngay_sinh", _ngaysinh)
+                            .Set("thong_tin.ngay_sinh", SelectedDatef)
                             .Set("thong_tin.gioi_tinh", _gioitinh)
                             .Set("thong_tin.dia_chi", _diachi)
                             .Set("thong_tin.quoc_tich", _quoctich)

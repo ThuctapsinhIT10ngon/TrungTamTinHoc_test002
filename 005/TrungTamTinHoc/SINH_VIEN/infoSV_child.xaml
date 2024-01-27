@@ -96,6 +96,7 @@
                             <TextBlock Text="Ngày sinh: " Margin="-1,0,0,0" FontSize="15" VerticalAlignment="Center" />
                             <DatePicker
                                 x:Name="dtpNgaysinh"
+                                SelectedDate="{Binding SelectedDate}"
                                 FontSize="14"
                                 Margin="20 0 0 0" Width="150"
                                 materialDesign:HintAssist.Hint=""
