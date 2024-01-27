@@ -174,32 +174,7 @@
                                 Margin="0,5,0,0"
                                 FontSize="13"
                                 Foreground="White"
-                                Text="Đăng ký khóa học"
-                                TextAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel
-                            x:Name="Stack_study"
-                            Width="115"
-                            Height="70"
-                            Margin="1,10,0,0"
-                            HorizontalAlignment="Left"
-                            Background="#0DC5FF"
-                            MouseEnter="StackPanel_MouseEnter"
-                            MouseLeave="StackPanel_MouseLeave"
-                            MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"
-                            Orientation="Vertical">
-                            <materialDesign:PackIcon
-                                Width="30"
-                                Height="30"
-                                Margin="-5,10,0,0"
-                                HorizontalAlignment="Center"
-                                Foreground="White"
-                                Kind="SchoolOutline" />
-                            <TextBlock
-                                Margin="-5,5,0,0"
-                                FontSize="14"
-                                Foreground="White"
-                                Text="Học tập"
+                                Text="Tạo lớp học"
                                 TextAlignment="Center" />
                         </StackPanel>
                         <StackPanel
@@ -224,7 +199,7 @@
                                 Margin="-5,5,0,0"
                                 FontSize="14"
                                 Foreground="White"
-                                Text="Lịch"
+                                Text="Sắp xếp lịch học"
                                 TextAlignment="Center" />
                         </StackPanel>
                         <StackPanel
@@ -249,8 +224,7 @@
                                 Margin="-5,5,0,0"
                                 FontSize="14"
                                 Foreground="White"
-                                Text="Hóa đơn"
-                                TextAlignment="Center" />
+                                TextAlignment="Center" Text="Quản lý giao dịch" />
                         </StackPanel>
                         <StackPanel
                             Width="115"
