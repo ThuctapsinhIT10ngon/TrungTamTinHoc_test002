@@ -68,7 +68,8 @@ namespace TrungTamTinHoc
         private async void Button_Click_2(object sender, RoutedEventArgs e)
         {
             // Hiển thị hiệu ứng loading
-            pgrLoading.Visibility = Visibility.Visible;
+           
+            pgrLoading.Visibility = Visibility.Visible; 
 
             string user_name = txtUsername.Text;
             string user_pass = txtUserpass.Password;

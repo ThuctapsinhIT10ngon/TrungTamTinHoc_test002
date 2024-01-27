@@ -147,8 +147,8 @@ namespace TrungTamTinHoc.NHAN_VIEN
                         space.Children.Remove(stackspace);
                         stackspace = null;
 
-                        homeSV_child homeSV = new homeSV_child();
-                        space.Children.Add(homeSV);
+                        homeNV_child homeNV = new homeNV_child();
+                        space.Children.Add(homeNV);
                     }
                     break;
 

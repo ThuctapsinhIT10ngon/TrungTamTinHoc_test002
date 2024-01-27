@@ -44,7 +44,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             txtkhoa.Text = doc["thong_tin"]["khoa_daotao"].AsString;
             txtHedaotao.Text = doc["thong_tin"]["he_daotao"].AsString;
             txtCnghanh.Text = doc["thong_tin"]["chuyen_nganh"].AsString;
-            dtpNgaysinh.SelectedDate = DateTime.ParseExact(doc["thong_tin"]["ngay_sinh"].AsString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //dtpNgaysinh.SelectedDate = DateTime.ParseExact(doc["thong_tin"]["ngay_sinh"].AsString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             string check = doc["thong_tin"]["gioi_tinh"].AsString;
             if (check == "Nam")
             {
@@ -74,7 +74,7 @@ namespace TrungTamTinHoc.SINH_VIEN
             string _khoa = txtkhoa.Text;
             string _hedaotao = txtHedaotao.Text;
             string _chuyennganh = txtCnghanh.Text;
-            string _ngaysinh = dtpNgaysinh.SelectedDate.ToString();
+            //string _ngaysinh = dtpNgaysinh.SelectedDate.ToString();
             if (rbNam.IsChecked == true)
             {
                 _gioitinh = "Nam";
@@ -100,7 +100,7 @@ namespace TrungTamTinHoc.SINH_VIEN
                             .Set("thong_tin.khoa_daotao", _khoa)
                             .Set("thong_tin.he_daotao", _hedaotao)
                             .Set("thong_tin.chuyen_nganh", _chuyennganh)
-                            .Set("thong_tin.ngay_sinh", _ngaysinh)
+                            //.Set("thong_tin.ngay_sinh", _ngaysinh)
                             .Set("thong_tin.gioi_tinh", _gioitinh)
                             .Set("thong_tin.dia_chi", _diachi)
                             .Set("thong_tin.quoc_tich", _quoctich)
@@ -171,6 +171,11 @@ namespace TrungTamTinHoc.SINH_VIEN
                 rbNu.IsEnabled = false;
                 dtpNgaysinh.IsEnabled = false;
             }
+        }
+
+        private void txtHoten_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
